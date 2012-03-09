@@ -1,0 +1,73 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title></title>
+<script type="text/javascript" src="Lattice.js"></script>
+<script type="text/javascript" src="RuleSet.js"></script>
+
+<style type="text/css">
+    .center_box
+    {
+        border:2px solid #1a1a1a;
+    }
+    
+    body
+    {
+        font-size:12px;
+	    font-family:Arial, Helvetica, sans-serif;
+        background-color:Black;
+            color:White;
+
+    }
+
+.lefttd
+{
+    width:400px;
+    /*border-right:2px solid #1a1a1a;*/
+}
+td
+{
+    vertical-align:top;
+}
+a {
+	color:#e3c13a;
+	text-decoration:underline;
+}
+
+
+</style>
+</head>
+<body>
+<table><tr><td class="lefttd">
+
+<h1>Conways Game Of Life</h1>
+The Game of Life (or simply Life) is not a game in the conventional sense. 
+<br />
+<br />There are no players, and no winning or losing. 
+<br />
+<br />Its the start of some research that I am doing into self organising criticality and emergent behaviour. 
+<br />
+<br />
+<a href="http://en.wikipedia.org/wiki/Conway's_Game_of_Life">For more details go to wikipedia.</a>
+<br /> <a href="http://www.conwaylife.com/">And here is an active site on the topic.</a>
+</td><td><br /><canvas id="canvas" width="800" height="600" class="center_box"></canvas>
+</td></tr></table>
+
+<script type="text/javascript">
+    var lattice = new Lattice(50, document.getElementById('canvas'));
+    var ruleSet = new RuleSet(lattice.siteList, 50, 50);
+    var i;
+
+    window.setInterval(render, 100);
+
+    function render() {
+        lattice.paintCanvas();
+        ruleSet.tick();
+        lattice.siteList = ruleSet.field.slice(0);
+     
+    }
+     ////   ; //// Lattice().cvs;
+
+</script>
+</body>
+</html>
